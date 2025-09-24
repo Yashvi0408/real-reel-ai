@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* AI Fake News Detection System - Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Core AI Theme Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    /* AI Gradient System */
+    --ai-primary: 237 100% 68%;
+    --ai-secondary: 262 83% 58%;
+    --ai-accent: 210 100% 56%;
+    
+    /* Verification Status Colors */
+    --verified-real: 142 71% 45%;
+    --verified-fake: 0 84% 60%;
+    --verified-uncertain: 45 93% 47%;
+    
+    /* Interface Colors */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --card-elevated: 240 9% 7%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 237 100% 68%;
+    --primary-foreground: 240 10% 3.9%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 237 100% 68%;
+    --radius: 0.75rem;
+    
+    /* AI Gradients */
+    --gradient-ai: linear-gradient(135deg, hsl(var(--ai-primary)), hsl(var(--ai-secondary)));
+    --gradient-verification: linear-gradient(135deg, hsl(var(--ai-accent)), hsl(var(--ai-primary)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card-elevated)), hsl(var(--card)));
+    
+    /* Shadows & Effects */
+    --shadow-ai: 0 10px 40px -10px hsl(var(--ai-primary) / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--ai-primary) / 0.4);
+    
+    /* Animations */
+    --transition-ai: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +125,75 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-ai);
+  }
+}
+
+@layer components {
+  /* AI Interface Components */
+  .ai-gradient {
+    background: var(--gradient-ai);
+  }
+  
+  .ai-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-ai);
+    backdrop-filter: blur(10px);
+  }
+  
+  .ai-button {
+    background: var(--gradient-ai);
+    box-shadow: var(--shadow-ai);
+    transition: var(--transition-bounce);
+  }
+  
+  .ai-button:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  .verification-real {
+    @apply bg-green-500/20 text-green-400 border-green-500/30;
+  }
+  
+  .verification-fake {
+    @apply bg-red-500/20 text-red-400 border-red-500/30;
+  }
+  
+  .verification-uncertain {
+    @apply bg-yellow-500/20 text-yellow-400 border-yellow-500/30;
+  }
+  
+  /* AI Loading Animation */
+  .ai-pulse {
+    animation: ai-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes ai-pulse {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 hsl(var(--ai-primary) / 0.7);
+    }
+    50% {
+      opacity: .8;
+      box-shadow: 0 0 0 10px hsl(var(--ai-primary) / 0);
+    }
+  }
+  
+  /* Chat-like Animations */
+  .slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

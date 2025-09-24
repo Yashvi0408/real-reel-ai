@@ -19,6 +19,17 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // AI Theme Colors
+        "ai-primary": "hsl(var(--ai-primary))",
+        "ai-secondary": "hsl(var(--ai-secondary))",
+        "ai-accent": "hsl(var(--ai-accent))",
+        
+        // Verification Colors  
+        "verified-real": "hsl(var(--verified-real))",
+        "verified-fake": "hsl(var(--verified-fake))",
+        "verified-uncertain": "hsl(var(--verified-uncertain))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
